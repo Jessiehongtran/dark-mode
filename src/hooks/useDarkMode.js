@@ -2,13 +2,12 @@ import {useEffect} from 'react';
 import useLocalStorage from "./useLocalStorage"
 
 
-function useDarkMode(){
-    const [darkMode, setDarkMode] = useLocalStorage('')
-    const body = document.querySelector('body')
+function useDarkMode(initialValue){
+    const [darkMode, setDarkMode] = useLocalStorage('example', initialValue)
 
     useEffect(()=>{
-        if (darkMode === true) {body.classList.add('.dark-mode')}
-        else {body.classList.remove('.dark-mode')}
+        if (darkMode) {document.body.classList.add('dark-mode')}
+        else {document.body.classList.remove('dark-mode')}
     }, [darkMode]);
 
     return [darkMode, setDarkMode]
@@ -16,3 +15,4 @@ function useDarkMode(){
 }
 
 export default useDarkMode
+
