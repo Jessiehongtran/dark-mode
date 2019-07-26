@@ -1,4 +1,4 @@
-
+import {useState} from 'react'
 
 
 function useLocalStorage(key, initialValue){
@@ -12,5 +12,7 @@ function useLocalStorage(key, initialValue){
         window.localStorage.setItem(key, JSON.stringify(value))
     }
 
-    return [storedValue]
+    return [storedValue, setValue]
 }
+
+export default useLocalStorage;
